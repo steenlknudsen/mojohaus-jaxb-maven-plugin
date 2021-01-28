@@ -1,8 +1,19 @@
-# About the Jaxb2-Maven-Plugin
+# JAXB Maven Plugin (mojohaus)
 
-[![Build Status](https://travis-ci.org/mojohaus/jaxb2-maven-plugin.svg?branch=master)](https://travis-ci.org/mojohaus/jaxb2-maven-plugin)
+[![Build Status](https://travis-ci.com/evolvedbinary/mojohaus-jaxb-maven-plugin.svg?branch=master)](https://travis-ci.org/evolvedbinary/mojohaus-jaxb-maven-plugin)
+[![Maven Central](https://img.shields.io/maven-central/v/com.evolvedbinary.maven.mojohaus/jaxb-maven-plugin-project.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.evolvedbinary.maven.mojohaus%22%20AND%20a:%22jaxb-maven-plugin%22)
+[![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-This Maven plugin uses the Java API for XML Binding (JAXB), version 2+, to perform one of 2 main tasks:
+* **Supports JAXB 3.**
+
+## Provenance
+This is a fork of the JAXB2 Maven Plugin from [mojohaus/jaxb2-maven-plugin](https://github.com/mojohaus/jaxb2-maven-plugin).
+
+The purpose of our fork is to add support for JAXB 3.
+
+## Introduction
+
+This Maven plugin uses the Java API for XML Binding (JAXB), version 3+, to perform one of 3 main tasks:
 
 1. Generate Java classes from XML Schemas (and optionally binding files). 
    This is done by delegating work to the XJC tool, bundled with the Java SDK.
@@ -21,10 +32,20 @@ The root URL for each static site is `http://www.mojohaus.org/jaxb2-maven-plugin
 where `{theVersionNumber}` should be replaced with the actual version, such as `2.3.1`. However, 
 [the documentation hub page](https://www.mojohaus.org/jaxb2-maven-plugin/) attempts to simplify access by presenting 
 version number and link to the documentation for each listed release.    
- 
-# Release process for Jaxb2-Maven-Plugin 
 
-Due to its documentation structure, the Jaxb2-Maven-Plugin has a slightly different release process - mainly 
+### Support
+Whilst this fork is an Open Source project, developing this plugin is not
+our key occupation. We are happy for users to open issues, however we make
+no claims that we will investigate or resolve them.
+
+We will gladly accept and merge Pull-Requests that address issues, but they
+must be accompanied by tests and be compatible with Java 8+.
+
+The original author of the plugin *may* also be able to offer you some support, see [mojohaus/jaxb2-maven-plugin](https://github.com/mojohaus/jaxb2-maven-plugin).
+
+# Release process for jaxb-maven-plugin 
+
+Due to its documentation structure, the jaxb-maven-plugin has a slightly different release process - mainly 
 due to the difference in publishing its Plugin Site Documentation. This is currently done in two steps.
 
 ## Publishing the Plugin artifacts to Maven Central
@@ -37,10 +58,10 @@ that we do not automatically publish the plugin documentation.
 Clone the repo and issue the standard maven release preparation, substituting the appropriate values for the 
 release version and tag. Semantic versioning applies, so unless you know that the next upcoming version should
 contain only documentation changes, let the development version have its minor version number bumped by 1 
-(i.e. use `2.5.0` instead of `2.4.1` in the example below). Of course, since the snapshot/development stream may 
+(i.e. use `3.1.0` instead of `3.0.1` in the example below). Of course, since the snapshot/development stream may 
 contain unexpected changes, the development version is merely an indication. 
 
-    mvn -DpushChanges=false -DreleaseVersion=2.4.0 -DdevelopmentVersion=2.5.0-SNAPSHOT -Dtag=jaxb2-maven-plugin-2.4.0 release:prepare
+    mvn -DpushChanges=false -DreleaseVersion=3.0.0 -DdevelopmentVersion=3.1.0-SNAPSHOT -Dtag=jaxb-maven-plugin-3.0.0 release:prepare
     
 If the release preparation build completed without errors, your local release repository should now contain 
 two new commits with the commit message starting with `[maven-release-plugin]` on the form shown below. 
@@ -57,7 +78,7 @@ We have still not pushed anything to any source code or artifact repository.
 
 Checkout the release tag on the master branch, rebuild and deploy to the OSS repository server.
 
-    git checkout jaxb2-maven-plugin-2.4.0
+    git checkout jaxb-maven-plugin-3.0.0
     
     mvn -Pmojo-release clean deploy
     
@@ -77,7 +98,7 @@ Checkout the newly prepared release and build its artifact and release documenta
 Note that the system property `https.protocols` is required to generate the site, since
 GitHub's api refuses to use the default TLS version of java (i.e. TLSv1.0).
 
-    git checkout jaxb2-maven-plugin-2.4.0
+    git checkout jaxb-maven-plugin-2.4.0
     
     mvn -Dhttps.protocols="TLSv1,TLSv1.1,TLSv1.2" clean package site
     
@@ -91,7 +112,7 @@ of the build. Copy the content of this directory to a temporary place, such as `
 #### c. Move the plugin documentation to its gh-pages branch location
 
 Check out the `gh-pages` branch, and copy the documentation to a directory
-named `Documentation/v2.4.0` (substitute the version number with the release version).
+named `Documentation/v3.0.0` (substitute the version number with the release version).
 Simply build on the structure shown in the image below:
 
 ![Structure](src/site/resources/images/documentation_structure.png "Documentation Structure")
@@ -101,9 +122,9 @@ Simply build on the structure shown in the image below:
 Assuming that the repository id is `github`, add the static documentation pages to git, 
 commit the addition using a standard message, and push:
 
-    git add Documentation/v2.4.0
+    git add Documentation/v3.9.0
     
-    git commit -m "Added plugin documentation for version 2.4.0"
+    git commit -m "Added plugin documentation for version 3.0.0"
     
     git push github 
 

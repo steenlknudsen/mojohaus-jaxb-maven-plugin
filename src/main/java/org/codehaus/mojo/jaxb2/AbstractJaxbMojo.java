@@ -119,7 +119,7 @@ public abstract class AbstractJaxbMojo extends AbstractMojo {
 
     private static final List<String> RELEVANT_GROUPIDS =
             Arrays.asList("com.sun.xml.bind", "jakarta.xml.bind");
-    private static final String OWN_ARTIFACT_ID = "jaxb2-maven-plugin";
+    private static final String OWN_ARTIFACT_ID = "jaxb-maven-plugin";
     private static final String SYSTEM_FILE_ENCODING_PROPERTY = "file.encoding";
     private static final String[] STANDARD_EXCLUDE_SUFFIXES = {"README.*", "\\.xml", "\\.txt"};
     private static final String[] STANDARD_PRELOADED_CLASSES = {
@@ -203,7 +203,7 @@ public abstract class AbstractJaxbMojo extends AbstractMojo {
      *
      * @since 2.0
      */
-    @Parameter(defaultValue = "${project.build.directory}/jaxb2", readonly = true, required = true)
+    @Parameter(defaultValue = "${project.build.directory}/jaxb", readonly = true, required = true)
     protected File staleFileDirectory;
 
     /**

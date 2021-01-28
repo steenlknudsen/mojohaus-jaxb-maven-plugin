@@ -23,7 +23,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.codehaus.mojo.jaxb2.its</groupId>
+        <groupId>com.evolvedbinary.maven.mojohaus.jaxb.its</groupId>
         <artifactId>schemagen-multimodule-project</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
@@ -65,8 +65,8 @@
                 This invocation fully uses the pluginManagement configuration from the parent project.
             -->
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
+                <groupId>com.evolvedbinary.maven.mojohaus</groupId>
+                <artifactId>jaxb-maven-plugin</artifactId>
                 <version>@project.version@</version>
             </plugin>
 
