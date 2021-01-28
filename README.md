@@ -1,6 +1,6 @@
 # JAXB Maven Plugin (mojohaus)
 
-[![Build Status](https://travis-ci.com/evolvedbinary/mojohaus-jaxb-maven-plugin.svg?branch=master)](https://travis-ci.org/evolvedbinary/mojohaus-jaxb-maven-plugin)
+[![Build Status](https://travis-ci.com/evolvedbinary/mojohaus-jaxb-maven-plugin.svg?branch=main)](https://travis-ci.org/evolvedbinary/mojohaus-jaxb-maven-plugin)
 [![Maven Central](https://img.shields.io/maven-central/v/com.evolvedbinary.maven.mojohaus/jaxb-maven-plugin-project.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.evolvedbinary.maven.mojohaus%22%20AND%20a:%22jaxb-maven-plugin%22)
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
@@ -76,7 +76,7 @@ We have still not pushed anything to any source code or artifact repository.
     
 #### b. Perform normal deployment of the artifact
 
-Checkout the release tag on the master branch, rebuild and deploy to the OSS repository server.
+Checkout the release tag on the main branch, rebuild and deploy to the OSS repository server.
 
     git checkout jaxb-maven-plugin-3.0.0
     
