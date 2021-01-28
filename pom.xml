@@ -28,7 +28,7 @@
 
     <groupId>com.evolvedbinary.maven.mojohaus</groupId>
     <artifactId>jaxb-maven-plugin</artifactId>
-    <version>3.0.0</version>
+    <version>3.1.0-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
 
     <name>JAXB-2 Maven Plugin</name>
@@ -101,7 +101,7 @@
         <connection>scm:git:https://github.com/evolvedbinary/mojohaus-jaxb-maven-plugin.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/evolvedbinary/mojohaus-jaxb-maven-plugin.git</developerConnection>
         <url>https://github.com/evolvedbinary/mojohaus-jaxb-maven-plugin.git</url>
-        <tag>jaxb-maven-plugin-3.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
     <issueManagement>
         <system>GitHub</system>
