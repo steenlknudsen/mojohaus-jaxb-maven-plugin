@@ -98,21 +98,25 @@ Checkout the newly prepared release and build its artifact and release documenta
 Note that the system property `https.protocols` is required to generate the site, since
 GitHub's api refuses to use the default TLS version of java (i.e. TLSv1.0).
 
-    git checkout jaxb-maven-plugin-2.4.0
+    git checkout jaxb-maven-plugin-3.0.0
     
     mvn -Dhttps.protocols="TLSv1,TLSv1.1,TLSv1.2" clean package site
     
 #### b. Copy the content of the `target/site` directory
 
 The release site documentation is now found within the target/site directory 
-of the build. Copy the content of this directory to a temporary place, such as `/tmp`:
+of the build. Copy the directory to a temporary place, such as `/tmp`:
 
-    cp -r target/site/* /tmp/
+    cp -r target/site /tmp/
     
 #### c. Move the plugin documentation to its gh-pages branch location
 
 Check out the `gh-pages` branch, and copy the documentation to a directory
 named `Documentation/v3.0.0` (substitute the version number with the release version).
+
+
+    cp -r /tmp/site Documentation/v3.0.0
+
 Simply build on the structure shown in the image below:
 
 ![Structure](src/site/resources/images/documentation_structure.png "Documentation Structure")
@@ -122,11 +126,11 @@ Simply build on the structure shown in the image below:
 Assuming that the repository id is `github`, add the static documentation pages to git, 
 commit the addition using a standard message, and push:
 
-    git add Documentation/v3.9.0
+    git add Documentation/v3.0.0
     
     git commit -m "Added plugin documentation for version 3.0.0"
     
-    git push github 
+    git push 
 
 Following the push, verify that the newly released documentation site is available on github.
 Simply originate from the [Plugin Documentation Hub Page](https://www.mojohaus.org/jaxb2-maven-plugin/#/repo), 
