@@ -24,13 +24,13 @@ This Maven plugin uses the Java API for XML Binding (JAXB), version 3+, to perfo
    Documentation for the Schemagen tool is also found at two places - the [Unix Documentation](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/schemagen.html)
    and the [Windows Documentation](https://docs.oracle.com/javase/8/docs/technotes/tools/windows/schemagen.html) 
 
-## [Plugin Documentation Hub](https://www.mojohaus.org/jaxb2-maven-plugin/)
+## [Plugin Documentation Hub](https://evolvedbinary.github.io/mojohaus-jaxb-maven-plugin/)
 
 On Github, Maven site documentation is shown for the 
-[5 latest releases of the JAXB2 plugin](https://www.mojohaus.org/jaxb2-maven-plugin/).
-The root URL for each static site is `http://www.mojohaus.org/jaxb2-maven-plugin/Documentation/v{theVersionNumber}/index.html`
-where `{theVersionNumber}` should be replaced with the actual version, such as `2.3.1`. However, 
-[the documentation hub page](https://www.mojohaus.org/jaxb2-maven-plugin/) attempts to simplify access by presenting 
+[5 latest releases of the JAXB plugin](https://evolvedbinary.github.io/mojohaus-jaxb-maven-plugin/).
+The root URL for each static site is `https://evolvedbinary.github.io/mojohaus-jaxb-maven-plugin/Documentation/v{theVersionNumber}/index.html`
+where `{theVersionNumber}` should be replaced with the actual version, such as `3.0.0`. However, 
+[the documentation hub page](https://evolvedbinary.github.io/mojohaus-jaxb-maven-plugin/) attempts to simplify access by presenting 
 version number and link to the documentation for each listed release.    
 
 ### Support
@@ -133,7 +133,7 @@ commit the addition using a standard message, and push:
     git push 
 
 Following the push, verify that the newly released documentation site is available on github.
-Simply originate from the [Plugin Documentation Hub Page](https://www.mojohaus.org/jaxb2-maven-plugin/#/repo), 
+Simply originate from the [Plugin Documentation Hub Page](https://evolvedbinary.github.io/mojohaus-jaxb-maven-plugin/), 
 which should look somewhat like the image below.
 
 ![Documentation Hub](src/site/resources/images/documentation_hub.png "Documentation Hub") 
