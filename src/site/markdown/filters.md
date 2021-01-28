@@ -14,7 +14,7 @@ the [LambdaJ](https://code.google.com/p/lambdaj/) from Google or the JDK 8 `java
 collection filtering. Most of these implementations, however, work in slightly different ways
 which tends to complicate the life of us programmers quite a bit. Just remembering the exact
 syntax to create a Filter from one of these projects can be somewhat problematic. Moreover, the
-JDK 8 mechanics cannot be used as the jaxb2-maven-plugin must be binary compatible with JDK 1.6+.
+JDK 8 mechanics cannot be used as the jaxb-maven-plugin must be binary compatible with JDK 1.6+.
 
 ## Filters in the JAXB2 Maven Plugin
 
@@ -51,7 +51,7 @@ As shown in the listing below, the Filters used by the Jaxb2 Maven Plugin sport 
             boolean accept(T candidate) throws IllegalStateException;
         }
 
-While this Filter implementation is simple enough to be implemented directly, the jaxb2-maven-plugin codebase
+While this Filter implementation is simple enough to be implemented directly, the jaxb-maven-plugin codebase
 contains implementations intended to simplify creating custom Filters - and indeed some concrete implementations
 as well. The inheritance hierarchy contains several types, as shown in the image below:
 
@@ -65,7 +65,7 @@ The Filter types are described below:
    used to match/accept a candidate or reject it. Since java regexp Patterns work primarily on Strings,
    each AbstractPatternFilter has a `StringConverter` which converts candidate objects to strings for matching.
 
-The jaxb2-maven-plugin also contains two concrete Filter implementations, directly usable in the plugin's configuration:
+The jaxb-maven-plugin also contains two concrete Filter implementations, directly usable in the plugin's configuration:
 
 1. `PatternFileFilter`: An AbstractPatternFilter implementation which matches `java.io.File`s. By default, the
    PatternFileFilter has a StringConverter which submits the full path of each File for matching. You can change
@@ -104,8 +104,8 @@ prepended to yield the two effective patterns:
 
 These two patterns are sufficient for matching the fully qualified path of the file
 `/some/path/to/src/main/xsd/blah.xsd`. For clarity, the effective pattern string used to compile the Patterns for
-matching files are also emitted when you run the jaxb2-maven-plugin with debug log settings. An example of
-typical output plugin debug logging is harvested from one of the integration tests in the jaxb2-maven-plugin itself.
+matching files are also emitted when you run the jaxb-maven-plugin with debug log settings. An example of
+typical output plugin debug logging is harvested from one of the integration tests in the jaxb-maven-plugin itself.
 Note the two resulting regular expressions used by the PatternFileFilter:
 
     +=================== [Filtered sources]
@@ -122,9 +122,9 @@ Note the two resulting regular expressions used by the PatternFileFilter:
     | [1/1]: src/main/xsd
     |
     | 3 Results:
-    | [1/3]: file:/Users/lj/Development/Projects/Codehaus/github_jaxb2_plugin/target/it/xjc-exclude-file-patterns/src/main/foo/gnat.txt
-    | [2/3]: file:/Users/lj/Development/Projects/Codehaus/github_jaxb2_plugin/target/it/xjc-exclude-file-patterns/src/main/someOtherXsds/fooSchema.txt
-    | [3/3]: file:/Users/lj/Development/Projects/Codehaus/github_jaxb2_plugin/target/it/xjc-exclude-file-patterns/src/main/someOtherXsds/some_schema.bar
+    | [1/3]: file:/Users/aretter/code/mojohaus-jaxb-maven-plugin/target/it/xjc-exclude-file-patterns/src/main/foo/gnat.txt
+    | [2/3]: file:/Users/aretter/code/mojohaus-jaxb-maven-plugin/target/it/xjc-exclude-file-patterns/src/main/someOtherXsds/fooSchema.txt
+    | [3/3]: file:/Users/aretter/code/mojohaus-jaxb-maven-plugin/target/it/xjc-exclude-file-patterns/src/main/someOtherXsds/some_schema.bar
     |
     +=================== [End Filtered sources]
 
@@ -147,7 +147,7 @@ either `.xsd` or `.foo` is done as follows:
         </xjcSourceExcludeFilters>
 
 Filters can be used to identify files to be excluded from processing by XJC and SchemaGen.
-All configuration properties for Mojos within the jaxb2-maven-plugin use optional Filters to identify these
+All configuration properties for Mojos within the jaxb-maven-plugin use optional Filters to identify these
 
 ### Configuring a pattern filter
 
@@ -156,12 +156,12 @@ For a fuller example of configuring a PatternFileFilter, refer to the
 
 ## Creating custom Filter implementations
 
-Should you want to integrate another Filter implementation for pattern matching into the jaxb2-maven-plugin
+Should you want to integrate another Filter implementation for pattern matching into the jaxb-maven-plugin
 configuration, you can simply implement and configure new Filter. In this case, we recommend that your
 implementation extend the `AbstractFilter` class (or any of its subclasses) to reuse the default lifecycle
 implemented there.
 
-When implemented, configure the jaxb2-maven-plugin to use your Filter - and do not forget to add the fully qualified
+When implemented, configure the jaxb-maven-plugin to use your Filter - and do not forget to add the fully qualified
 class name of your custom Filter class:
 
         <!--
@@ -173,5 +173,5 @@ class name of your custom Filter class:
             </filter>
         </xjcSourceExcludeFilters>
 
-Feel free to submit well-documented Filter implementations to the jaxb2-maven-plugin team if you feel they ought
+Feel free to submit well-documented Filter implementations to the jaxb-maven-plugin team if you feel they ought
 to be included within the standard distribution.

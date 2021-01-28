@@ -25,7 +25,7 @@ under the License.
         <fluidoSkin>
             <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
             <gitHub>
-                <projectId>mojohaus/jaxb2-maven-plugin</projectId>
+                <projectId>evolvedbinary/mojohaus-jaxb-maven-plugin</projectId>
                 <ribbonOrientation>right</ribbonOrientation>
                 <ribbonColor>gray</ribbonColor>
             </gitHub>

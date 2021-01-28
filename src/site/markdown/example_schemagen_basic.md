@@ -1,25 +1,25 @@
 # Basic Examples - XML Schema Generation
 
-> **Note**: These examples are valid for the 2.x version of the plugin, and do not work for the 
+> **Note**: These examples are valid for the 2.x and 3.x versions of the plugin, and do not work for the 
 > jaxb2-maven-plugin version 1.x
 
-These basic examples illustrate how to generate XSDs from JAXB-annotated Java classes using the jaxb2-maven-plugin,
+These basic examples illustrate how to generate XSDs from JAXB-annotated Java classes using the jaxb-maven-plugin,
 and highlight the use of some of the plugin's common configuration options. This plugin runs the JDK distribution's
 SchemaGenerator compiler (check JAVA_HOME/bin/schemagen), and integrates the SchemaGenerator's configuration properties
-into a Maven project. Also, the jaxb2-maven-plugin
+into a Maven project. Also, the jaxb-maven-plugin
 [performs post-processing on generated XSD files](./example_schemagen_postprocessing.html) to improve usability
 and quality of the XSD files generated. 
 
-> ### Jaxb2-Maven-Plugin and `Schemagen` known issues
+> ### jaxb-maven-plugin and `Schemagen` known issues
 >  
 > The `Schemagen` tool has been around in the JDK for quite awhile, and should be considered a mature codebase. 
 > However, schemagen has some long-outstanding issues, as is shown by the
 > 
 > [SchemaGen Issue Tracker on GitHub](https://github.com/javaee/jaxb-v2/labels/Component%3A%20schemagen).
 > 
-> The Jaxb2-Maven-Plugin delegates its operations to the JDK-installed schemagen tool, and performs some 
+> The jaxb-maven-plugin delegates its operations to the JDK-installed schemagen tool, and performs some 
 > post-processing operations to yield schemas with somewhat improved usability than the XSDs emitted by SchemaGen. 
-> However, the Jaxb2-Maven-Plugin does not aim to replace schemagen's implementation. Issues within SchemaGen 
+> However, the jaxb-maven-plugin does not aim to replace schemagen's implementation. Issues within SchemaGen 
 > must be solved in that codebase. 
 
 ## SchemaGenerator in the JDK
@@ -69,7 +69,7 @@ for each of its "java files" arguments:
 </table>
 
 **Note**: `schemagen` does not accept a mix of source and bytecode arguments as "java files".
-While the jaxb2-maven-plugin ensures that any sources added to the schemagen goals adheres to
+While the jaxb-maven-plugin ensures that any sources added to the schemagen goals adheres to
 the criteria defined in the table above, it would lead too far to let the plugin validate that
 the user does not supply a mix of java source and bytecode files as arguments. If you would like
 to operate on bytecode files only, the plugin configuration must remove the sourcePath from the
@@ -110,7 +110,7 @@ However, some best practises are recommended to generate good-quality XSD from a
 4. Create a TransformSchema configuration to map your namespace (`http://some/namespace`, for example) to a user
    friendly XML namespace prefix and a sensibly named XSD file. See the
    [Postprocessing Example Page](./example_schemagen_postprocessing.html) for examples on how to configure the
-   jaxb2-maven-plugin to use TransformSchema configurations.
+   jaxb-maven-plugin to use TransformSchema configurations.
 
         package se.west.schema;
 
@@ -201,13 +201,13 @@ Also, feel free to investigate the integration tests of the plugin itself.
 
 ## Example 1: Default XSD generation
 
-Generate XSD files from annotated Java classes is simple with the jaxb2-maven-plugin.
+Generate XSD files from annotated Java classes is simple with the jaxb-maven-plugin.
 Adding the plugin to your project and invoking its `schemagen` goal makes schemagen compile all
 java files found under the standard compile source roots (typically `src/main/java`):
 
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
+                <groupId>com.evolvedbinary.maven.mojohaus</groupId>
+                <artifactId>jaxb-maven-plugin</artifactId>
                 <executions>
                     <execution>
                         <id>schemagen</id>
@@ -229,14 +229,14 @@ The output schema will be called `schema1.xsd`, `schema2.xsd` etc. and placed wi
 
 ## Example 2: Exclude source files from processing
 
-The jaxb2-maven-plugin permits you to exclude selected source files from processing, using a set of Filters.
+The jaxb-maven-plugin permits you to exclude selected source files from processing, using a set of Filters.
 If a Filter matches a candidate source file, it is excluded from processing. In the sample below, any file
 whose full path ends with `jaxb.index` will be ignored by schemagen even if found below a `src/main/java`
 directory:
 
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
+                <groupId>com.evolvedbinary.maven.mojohaus</groupId>
+                <artifactId>jaxb-maven-plugin</artifactId>
                 <executions>
                     <execution>
                         <id>schemagen</id>
@@ -354,12 +354,12 @@ Finally, the configuration example below shows how to override the default patte
                     </schemaSourceExcludeFilters>
 
 If your implementation class `se.west.converter.FileNameConverter` is located in a separate project, remember to
-make that implementation class accessible to the jaxb2-maven-plugin. This is done by Maven's default dependency
+make that implementation class accessible to the jaxb-maven-plugin. This is done by Maven's default dependency
 mechanism for plugins, as illustrated by the full configuration example below.
 
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
+                <groupId>com.evolvedbinary.maven.mojohaus</groupId>
+                <artifactId>jaxb-maven-plugin</artifactId>
                 <executions>
                     <execution>
                         <id>schemagen</id>
@@ -402,11 +402,11 @@ mechanism for plugins, as illustrated by the full configuration example below.
                 </dependencies>
             </plugin>
 
-## Example 4: Debugging jaxb2-maven-plugin executions
+## Example 4: Debugging jaxb-maven-plugin executions
 
 If you are curious about the exact java regexp patterns used for matching your files, or simply want to see what the
-jaxb2-maven-plugin does internally, run the plugin in debug mode by adding the `-X` switch. The debug log contains
-somewhat human-friendly log entries which contains the SchemaGen arguments synthesized by the jaxb2-maven-plugin and
+jaxb-maven-plugin does internally, run the plugin in debug mode by adding the `-X` switch. The debug log contains
+somewhat human-friendly log entries which contains the SchemaGen arguments synthesized by the jaxb-maven-plugin and
 supplied in order:
 
         +=================== [9 SchemaGen Arguments]
@@ -414,16 +414,16 @@ supplied in order:
         | [0]: -encoding
         | [1]: UTF-8
         | [2]: -d
-        | [3]: /Users/lj/Development/Projects/Codehaus/github_jaxb2_plugin/target/it/schemagen-main/target/schemagen-work/compile_scope
+        | [3]: /Users/aretter/code/mojohaus-jaxb-maven-plugin/target/it/schemagen-main/target/schemagen-work/compile_scope
         | [4]: -classpath
-        | [5]: /Users/lj/Development/Projects/Codehaus/github_jaxb2_plugin/target/it/schemagen-main/src/main/java/
+        | [5]: /Users/aretter/code/mojohaus-jaxb-maven-plugin/target/it/schemagen-main/src/main/java/
         | [6]: -episode
-        | [7]: /Users/lj/Development/Projects/Codehaus/github_jaxb2_plugin/target/it/schemagen-main/target/generated-resources/schemagen/META-INF/sun-jaxb.episode
+        | [7]: /Users/aretter/code/mojohaus-jaxb-maven-plugin/target/it/schemagen-main/target/generated-resources/schemagen/META-INF/sun-jaxb.episode
         | [8]: src/main/java/se/west/gnat/Foo.java
         |
         +=================== [End 9 SchemaGen Arguments]
 
-If you would like to run SchemaGen manually in the same way as the jaxb2-maven-plugin runs the tool, simply
+If you would like to run SchemaGen manually in the same way as the jaxb-maven-plugin runs the tool, simply
 paste the arguments given in the debug listing into a shell (separate with spaces).
 
 The debug log also shows the configuration and result of the configured PatternFileFilters; as shown in the listing
@@ -450,14 +450,14 @@ removing all files identified by the two PatternFileFilters:
         |         [2/3]: (\p{javaLetterOrDigit}|\p{Punct})+\.properties
         |
         | 1 Standard Directories:
-        | [1/1]: /Users/lj/Development/Projects/Codehaus/github_jaxb2_plugin/target/it/schemagen-main/src/main/java
+        | [1/1]: /Users/aretter/code/mojohaus-jaxb-maven-plugin/target/it/schemagen-main/src/main/java
         |
         | 1 Results:
-        | [1/1]: file:/Users/lj/Development/Projects/Codehaus/github_jaxb2_plugin/target/it/schemagen-main/src/main/java/se/west/gnat/Foo.java
+        | [1/1]: file:/Users/aretter/code/mojohaus-jaxb-maven-plugin/target/it/schemagen-main/src/main/java/se/west/gnat/Foo.java
         |
         +=================== [End Filtered sources]
 
-Also, the jaxb2-maven-plugin debug log contains debug log statements emitted from the underlying tools themselves
+Also, the jaxb-maven-plugin debug log contains debug log statements emitted from the underlying tools themselves
 (SchemaGen or XJC). These statements may be formatted in somewhat strange ways, but starts with the name of the tool
 encased in brackets. As illustrated below, the SchemaGen tool emitted a debug statement from the createOutput method
 with the content `ENTRY schema1.xsd`:
@@ -472,11 +472,11 @@ Yes ... you get the timestamp for free ...
 If you require the SchemaGen tool to be executed with a default Locale other than your standard default Locale, simply 
 use the `locale` configuration parameter and supply a string parseable to a Locale on the form
 `<language>[,<country>[,<variant>]]`. For example, to generate the schema using french locale despite running Maven with
-another Locale, configure the jaxb2-maven-plugin as follows:
+another Locale, configure the jaxb-maven-plugin as follows:
 
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
+                <groupId>com.evolvedbinary.maven.mojohaus</groupId>
+                <artifactId>jaxb-maven-plugin</artifactId>
                 <executions>
                     <execution>
                         <id>schemagen</id>
@@ -532,7 +532,7 @@ The generated schema
 
 The SchemaGen tool assumes that all relative paths to source files are calculated from the system property
 `user.dir`, as described above. For maven multi-module projects the `user.dir` property is defined as the
-directory where the `mvn` command was launched - and the jaxb2-maven-plugin calculates the relative path from
+directory where the `mvn` command was launched - and the jaxb-maven-plugin calculates the relative path from
 this directory to the actual file. This implies that schemagen will need a full path to its source file arguments,
 but only a fully qualified classname for bytecode arguments. Also, the schemagen tool requires *either* source
 or bytecode arguments - not both.
@@ -545,8 +545,8 @@ A native schemagen command will therefore take one of the following forms:
 
     schemagen -d target/classes se.west.gnat.Bar
 
-While the jaxb2-maven-plugin could potentially include some snazzy and complex code to ensure that
+While the jaxb-maven-plugin could potentially include some snazzy and complex code to ensure that
 the arguments would be only either source or bytecode files, the underlying schemagen tool will
-complain visibly if the argument combinations are incorrect. Thus, the jaxb2-maven-plugin authors
+complain visibly if the argument combinations are incorrect. Thus, the jaxb-maven-plugin authors
 felt it would be better to simply delegate the error handling in this case to schemagen, to avoid
 creating a new layer of potentially complex logic within the plugin.

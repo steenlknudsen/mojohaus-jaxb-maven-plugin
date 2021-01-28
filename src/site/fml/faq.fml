@@ -17,18 +17,18 @@
     <part id="Schemagen">
         <title>Schemagen</title>
         <faq id="Tooling">
-            <question>What tool is used by the jaxb2-maven-plugin to generate the XML schema definition files?</question>
+            <question>What tool is used by the jaxb-maven-plugin to generate the XML schema definition files?</question>
             <answer>
                 <p>The <em>schemagen</em> tool used by the plugin is part of the JDK distribution since Java 6.</p>
 
-                <p>The jaxb2-maven-plugin provides some augmentations to the generated schema files, such
+                <p>The jaxb-maven-plugin provides some augmentations to the generated schema files, such
                 as the ability to define a schema prefix and filename for each generated XML schema.</p>
             </answer>
         </faq>
         <faq id="LogMessages">
             <question>How can I see the log messages output by the schemagen tool?</question>
             <answer>
-                <p>Run the jaxb2-maven-plugin in debug mode to see logging from the schemagen tool.
+                <p>Run the jaxb-maven-plugin in debug mode to see logging from the schemagen tool.
                 Please refer to the examples for further information.</p>
             </answer>
         </faq>

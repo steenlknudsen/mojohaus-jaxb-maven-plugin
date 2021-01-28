@@ -1,16 +1,16 @@
 # Post-processing Examples - XML Schema Generation
 
 > **Note**: These examples are valid for the 2.x version of the plugin, and do not work for the 
-> jaxb2-maven-plugin version 1.x. Post-processing was introduced in version 2 of the jaxb2-maven-plugin.
+> jaxb2-maven-plugin version 1.x. Post-processing was introduced in version 2 of the jaxb-maven-plugin.
 
-The SchemaGenerator ("schemagen") tool which is used by the Jaxb2-Maven-plugin to create XML Schema files
+The SchemaGenerator ("schemagen") tool which is used by the jaxb-maven-plugin to create XML Schema files
 from JAXB-annotated java source code does not necessarily produce professional-grade XSD files by default.
 Some properties of the generated XSD files can be augmented for improved usability; this is done by the
-jaxb2-maven-plugin following the standard SchemaGenerator in the following order:
+jaxb-maven-plugin following the standard SchemaGenerator in the following order:
 
 <img src="images/plantuml/postProcessing.png" />
 
-Each post-processor used by the jaxb2-maven-plugin process XML nodes and hence implement the `NodeProcessor`
+Each post-processor used by the jaxb-maven-plugin process XML nodes and hence implement the `NodeProcessor`
 interface. A brief explanation of what they do is given in the table below.
 
 <table>
@@ -137,8 +137,8 @@ into the XSD files - simply activate the goal within the plugin's configuration.
 
 
                 <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>jaxb2-maven-plugin</artifactId>
+                    <groupId>com.evolvedbinary.maven.mojohaus</groupId>
+                    <artifactId>jaxb-maven-plugin</artifactId>
                     <executions>
                         <execution>
                             <id>schemagen</id>
@@ -151,14 +151,14 @@ into the XSD files - simply activate the goal within the plugin's configuration.
 
 ### Formatting XSD documentation annotations
 
-The jaxb2-maven-plugin holds a JavaDocRenderer instance used to convert a JavaDoc comment into
+The jaxb-maven-plugin holds a JavaDocRenderer instance used to convert a JavaDoc comment into
 plain text, to be inserted into the annotation element. Unless overridden in the plugin's configuration, a
 default JavaDocRenderer is used. You can change the formatting to a format better suited to your
 needs by implementing a custom JavaDocRenderer and telling the plugin to use it:
 
                 <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>jaxb2-maven-plugin</artifactId>
+                    <groupId>com.evolvedbinary.maven.mojohaus</groupId>
+                    <artifactId>jaxb-maven-plugin</artifactId>
                     <executions>
                         <execution>
                             <id>schemagen</id>
@@ -249,8 +249,8 @@ snippet below, 3 namespaces are transformed to be given user-friendly prefixes a
 The full plugin configuration containing 2 post-processors is shown below:
 
                         <plugin>
-                           <groupId>org.codehaus.mojo</groupId>
-                           <artifactId>jaxb2-maven-plugin</artifactId>
+                           <groupId>com.evolvedbinary.maven.mojohaus</groupId>
+                           <artifactId>jaxb-maven-plugin</artifactId>
                            <executions>
                                <execution>
                                    <id>schemagen</id>

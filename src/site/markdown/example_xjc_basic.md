@@ -3,7 +3,7 @@
 > **Note**: These examples are valid for the 2.x version of the plugin, and do not necessarily 
 > work for the jaxb2-maven-plugin version 1.x
 
-These basic examples show how to generate Java code from JAXB using the jaxb2-maven-plugin,
+These basic examples show how to generate Java code from JAXB using the jaxb-maven-plugin,
 and highlight the use of some of the plugin's common configuration options.
 
 This plugin runs the XJC binding compiler from the JAXB distribution, and integrates
@@ -24,7 +24,7 @@ code.
 
 ## Standard (implicit) configuration
 
-To find which files should be included within an XJC compilation the jaxb2-maven-plugin uses 
+To find which files should be included within an XJC compilation the jaxb-maven-plugin uses 
 the following algorithm. Note that the find-and-filter algorithm is applied to find both XSD files and XJB files.
 
 1. Find source files. Source files are either given as an explicit path, or found by recursively listing 
@@ -108,8 +108,8 @@ plugin's JAXB implementation dependency (see the [target parameter](./xjc-mojo.h
         </pluginManagement>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
+                <groupId>com.evolvedbinary.maven.mojohaus</groupId>
+                <artifactId>jaxb-maven-plugin</artifactId>
                 <version>${project.version}</version>
                 <executions>
                     <execution>
@@ -132,7 +132,7 @@ plugin's JAXB implementation dependency (see the [target parameter](./xjc-mojo.h
 
 ## Example 2: Aligning JDK with JAXB API and JAXB runtime environment
 
-So you want to use JAXB on JDK 1.6? You would then need to configure the jaxb2-maven-plugin for a Java 6+ project,
+So you want to use JAXB on JDK 1.6? You would then need to configure the jaxb-maven-plugin for a Java 6+ project,
 which implies two separate configuration properties:
 
 1. *maven-compiler-plugin*: Define java version 1.6 for the compiler, to use the Java 6+ platform as the runtime
@@ -159,8 +159,8 @@ The project can now be built with JDK 1.6.
             </pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>jaxb2-maven-plugin</artifactId>
+                    <groupId>com.evolvedbinary.maven.mojohaus</groupId>
+                    <artifactId>jaxb-maven-plugin</artifactId>
                     <version>${project.version}</version>
                     <executions>
                         <execution>
@@ -195,8 +195,8 @@ Note that the `sourceType` configuration parameter is case sensitive for matchin
 Refer to the plugin's [JavaDoc](./apidocs/index.html) to see all possible values.
 
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
+                <groupId>com.evolvedbinary.maven.mojohaus</groupId>
+                <artifactId>jaxb-maven-plugin</artifactId>
                 <version>${project.version}</version>
                 <executions>
                     <execution>
@@ -222,7 +222,7 @@ Refer to the plugin's [JavaDoc](./apidocs/index.html) to see all possible values
 
 ## Example 4: Defining sources and XJC exclude filters
 
-By default, the jaxb2-maven-plugin examines the directory `src/main/xsd` for XSD files
+By default, the jaxb-maven-plugin examines the directory `src/main/xsd` for XSD files
 which should be used by JAXB to create Java source code (and `src/test/xsd` for test XSD sources).
 If you would like to place your XSD somewhere else, you need to define source elements
 as shown in the configuration below. The paths given are interpreted relative to
@@ -237,8 +237,8 @@ but exclude `src/main/some/other/xsds/thisIsASource.xsd` due to the pattern defi
 
 
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
+                <groupId>com.evolvedbinary.maven.mojohaus</groupId>
+                <artifactId>jaxb-maven-plugin</artifactId>
                 <version>${project.version}</version>
                 <executions>
                     <execution>
@@ -304,8 +304,8 @@ with different configuration, you need to have multiple plugin execution binding
 One execution binding per unique configuration, as shown in the snippet below:
 
     <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>jaxb2-maven-plugin</artifactId>
+        <groupId>com.evolvedbinary.maven.mojohaus</groupId>
+        <artifactId>jaxb-maven-plugin</artifactId>
         <version>${project.version}</version>
         <executions>
             <execution>
@@ -412,11 +412,11 @@ Unless xjbExcludes filters are given, standard excludes are in effect. These are
 3. Files or Directories whose names starts with "." (normally this implies hidden directories and setting files)
 4. Directories with the name "CVS"        
 
-## Example 7: Debugging jaxb2-maven-plugin executions
+## Example 7: Debugging jaxb-maven-plugin executions
 
 If you are curious about the exact java regexp patterns used for matching your files, or simply want to see what the
-jaxb2-maven-plugin does internally, run the plugin in debug mode by adding the `-X` switch. The debug log contains
-somewhat human-friendly log entries which contains the XJC arguments synthesized by the jaxb2-maven-plugin and
+jaxb-maven-plugin does internally, run the plugin in debug mode by adding the `-X` switch. The debug log contains
+somewhat human-friendly log entries which contains the XJC arguments synthesized by the jaxb-maven-plugin and
 supplied in order:
 
         +=================== [11 XJC Arguments]
@@ -427,15 +427,15 @@ supplied in order:
         | [3]: -p
         | [4]: com.example.myschema
         | [5]: -d
-        | [6]: /Users/lj/Development/Projects/Codehaus/github_jaxb2_plugin/target/it/xjc-main/target/generated-sources/jaxb
+        | [6]: /Users/aretter/code/mojohaus-jaxb-maven-plugin/target/it/xjc-main/target/generated-sources/jaxb
         | [7]: -extension
         | [8]: -episode
-        | [9]: /Users/lj/Development/Projects/Codehaus/github_jaxb2_plugin/target/it/xjc-main/target/generated-sources/jaxb/META-INF/sun-jaxb.episode
+        | [9]: /Users/aretter/code/mojohaus-jaxb-maven-plugin/target/it/xjc-main/target/generated-sources/jaxb/META-INF/sun-jaxb.episode
         | [10]: src/main/xsd/address.xsd
         |
         +=================== [End 11 XJC Arguments]
 
-If you would like to run XJC manually in the same way as the jaxb2-maven-plugin runs the tool, simply
+If you would like to run XJC manually in the same way as the jaxb-maven-plugin runs the tool, simply
 paste the arguments given in the debug listing into a shell (separate with spaces).
 
 The debug log also shows the configuration and result of the configured PatternFileFilters; as shown in the listing
@@ -463,11 +463,11 @@ removing all files identified by the two PatternFileFilters:
         | [1/1]: src/main/xsd
         |
         | 1 Results:
-        | [1/1]: file:/Users/lj/Development/Projects/Codehaus/github_jaxb2_plugin/target/it/xjc-main/src/main/xsd/address.xsd
+        | [1/1]: file:/Users/aretter/code/mojohaus-jaxb-maven-plugin/target/it/xjc-main/src/main/xsd/address.xsd
         |
         +=================== [End Filtered sources]
 
-Also, the jaxb2-maven-plugin debug log contains debug log statements emitted from the underlying tools themselves
+Also, the jaxb-maven-plugin debug log contains debug log statements emitted from the underlying tools themselves
 (SchemaGen or XJC). These statements may be formatted in somewhat strange ways, but starts with the name of the tool
 encased in brackets. As illustrated below, the XJC tool emitted debug statements, one of which is from the
 allowExternalAccess method indicating that the property `http://javax.xml.XMLConstants/property/accessExternalSchema`
@@ -489,11 +489,11 @@ Yes ... you get the timestamp for free ...
 If you require the XJC tool to be executed with a default Locale other than your standard default Locale, simply use 
 the `locale` configuration parameter and supply a string parseable to a Locale on the form
 `<language>[,<country>[,<variant>]]`. For example, to generate the XJC using french locale despite running Maven with
-another Locale, configure the jaxb2-maven-plugin as follows:
+another Locale, configure the jaxb-maven-plugin as follows:
 
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
+                <groupId>com.evolvedbinary.maven.mojohaus</groupId>
+                <artifactId>jaxb-maven-plugin</artifactId>
                 <executions>
                     <execution>
                         <id>xjc</id>

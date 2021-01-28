@@ -1,4 +1,4 @@
-# What is the JAXB2 Maven Plugin?
+# What is the JAXB Maven Plugin?
 
 This plugin uses the Java API for XML Binding (JAXB), version 2+, to generate Java 
 classes from XML Schemas (and optionally binding files) and to create XML Schemas from 
@@ -13,7 +13,7 @@ two JDK-supplied tools XJC and Schemagen, through its
 
 ### Upgrading from version 1.x
 
-The jaxb2-maven-plugin was completely reimplemented for version 2, which means that 
+The jaxb-maven-plugin was completely reimplemented for version 2, which means that 
 some/most parameters work differently from the 1.x versions of the plugin. 
 The plugin's configuration is therefore not backwards compatible with the 1.x versions.
 
@@ -25,15 +25,15 @@ found in the integration tests of the plugin itself.
 
 ## Goals Overview
 
-The jaxb2-maven-plugin has four main goals, listed below. 
+The jaxb-maven-plugin has four main goals, listed below. 
 Detailed information about each goal can be found on their respective documentation page.
 
-1. [jaxb2:schemagen](./schemagen-mojo.html) Creates XML Schema Definition (XSD) file(s)
+1. [jaxb:schemagen](./schemagen-mojo.html) Creates XML Schema Definition (XSD) file(s)
    from annotated Java sources.
-2. [jaxb2:testSchemagen](./testSchemagen-mojo.html) Creates XML Schema Definition (XSD) 
+2. [jaxb:testSchemagen](./testSchemagen-mojo.html) Creates XML Schema Definition (XSD) 
    file(s) from annotated Java test sources.
-3. [jaxb2:xjc](./xjc-mojo.html) Generates Java sources from XML Schema(s).
-4. [jaxb2:testXjc](./testXjc-mojo.html) Generates Java test sources from XML Schema(s).
+3. [jaxb:xjc](./xjc-mojo.html) Generates Java sources from XML Schema(s).
+4. [jaxb:testXjc](./testXjc-mojo.html) Generates Java test sources from XML Schema(s).
 
 ## Usage examples
 
@@ -66,7 +66,7 @@ A set of usage examples are found within the following pages:
 
 ### If you still have questions ...
 
-Two sets of documentation may give you better insight in the tools used by this jaxb2-maven-plugin:
+Two sets of documentation may give you better insight in the tools used by this jaxb-maven-plugin:
 
 1. The [JAXB Reference Implementation](https://jaxb.java.net/) holds documentation
    about JAXB and the XJC compiler.
@@ -78,7 +78,7 @@ In case you still have questions regarding the plugin's usage, please feel free 
 the answer to your question as part of an older thread. Hence, it is also worth browsing/searching
 the [mail archive](./mail-lists.html).
 
-The jaxb2-maven-plugin is compatible with [m2e](http://eclipse.org/m2e/) and
+The jaxb-maven-plugin is compatible with [m2e](http://eclipse.org/m2e/) and
 integrates with the Eclipse build, providing incremental build support in the IDE. 
 This requires m2e v1.1 or later.
 
