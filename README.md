@@ -4,6 +4,8 @@
 [![Maven Central](https://img.shields.io/maven-central/v/com.evolvedbinary.maven.mojohaus/jaxb-maven-plugin-project.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.evolvedbinary.maven.mojohaus%22%20AND%20a:%22jaxb-maven-plugin%22)
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
+* Goal to support JAXB version 4
+
 * **Supports JAXB 3.**
 
 ## Provenance
